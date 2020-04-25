@@ -1,21 +1,19 @@
-const express = require("express"),
-  next = require("next"),
-  dev = process.env.NODE_ENV !== "production",
-  port = process.env.PORT || 3000,
-  app = next({ dev }),
-  handle = app.getRequestHandler();
+const express = require("express");
+const compression = require("compression");
+const next = require("next");
+
+const dev = process.env.NODE_ENV !== "production";
+console.log(process.env.NODE_ENV);
+const app = next({ dev });
+const handle = app.getRequestHandler();
+const port = process.env.PORT || 3000;
 
 app
   .prepare()
   .then(() => {
     const server = express();
 
-    server.get("/p/:id", (req, res) => {
-      const actualPage = "/post",
-        queryParams = { title: req.params.id };
-
-      app.render(req, res, actualPage, queryParams);
-    });
+    server.use(compression());
 
     server.get("*", (req, res) => {
       return handle(req, res);
@@ -23,7 +21,7 @@ app
 
     server.listen(port, (err) => {
       if (err) throw err;
-      console.log("> Ready on http://localhost:" + port);
+      console.log(`> Ready on http://localhost:${port}`);
     });
   })
   .catch((ex) => {
