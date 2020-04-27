@@ -70,7 +70,7 @@ export default class extends Page {
         <Container>
           <p className="text-muted small">
             * This project is not associated with Next.js or Zeit. Deploy by
-            ameza.
+            ameza 2.
           </p>
           <h2 className="text-center display-4 mt-5 mb-2">Features</h2>
           <Row className="pb-5">
