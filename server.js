@@ -1,5 +1,5 @@
 const express = require("express");
-const compression = require("compression");
+// const compression = require("compression");
 const next = require("next");
 
 const dev = process.env.NODE_ENV !== "production";
@@ -13,7 +13,7 @@ app
   .then(() => {
     const server = express();
 
-    server.use(compression());
+    // server.use(compression());
 
     server.get("*", (req, res) => {
       return handle(req, res);

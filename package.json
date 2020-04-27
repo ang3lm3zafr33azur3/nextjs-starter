@@ -44,9 +44,9 @@
     "fsevents": "*"
   },
   "scripts": {
-    "dev": "next",
-    "build": "SET NODE_ENV=production && next build",
-    "start": "node server.js"
+    "dev": "node server.js",
+    "build": "next build",
+    "start": "SET NODE_ENV=production && node server.js"
   },
   "engines": {
     "node": "8.11.x"
